@@ -1,0 +1,1103 @@
+/* Cores litúrgicas: roxo da estola na penitência, branco e ouro depois da absolvição.
+   Rubricas em vermelho e falas em tinta, como no missal. */
+:root {
+  --papel: #f1edf3;
+  --tinta: #1f1326;
+  --tinta-suave: #5b4c66;
+  --estola: #45205e;
+  --estola-funda: #2c1140;
+  --sobre-estola: #f3eef6;
+  --sobre-estola-suave: #cbbbd8;
+  --fio: #d4b25a;
+  --sobre-fio: #2c1140;
+  --rubrica: #a3211b;
+  --luz: #ffe9a8;
+  --linha: color-mix(in srgb, var(--tinta) 16%, transparent);
+  --foco: var(--estola);
+
+  --serifa: 'Brygada 1918 Variable', Georgia, serif;
+  --sans: 'Hanken Grotesk Variable', system-ui, sans-serif;
+  --borda: clamp(1.25rem, 4vw, 3.5rem);
+  --medida: 36rem;
+
+  color-scheme: light;
+}
+
+:root[data-estado='graca'] {
+  --papel: #fdfcf7;
+  --estola: #f2e6bb;
+  --estola-funda: #e3cf8c;
+  --sobre-estola: #2a2010;
+  --sobre-estola-suave: #6b5a2c;
+  --fio: #7d5e0d;
+  --sobre-fio: #fffdf5;
+  --luz: #ffffff;
+  --foco: #7d5e0d;
+}
+
+:root[data-luz='baixa'] {
+  --papel: #110a16;
+  --tinta: #cfc4d6;
+  --tinta-suave: #9486a0;
+  --estola: #1c1026;
+  --estola-funda: #140a1c;
+  --sobre-estola: #cfc4d6;
+  --sobre-estola-suave: #9486a0;
+  --fio: #b89a4e;
+  --sobre-fio: #140a1c;
+  --rubrica: #e2877f;
+  --foco: #b89a4e;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--papel);
+  color: var(--tinta);
+  font: 400 1.0625rem/1.55 var(--sans);
+  font-optical-sizing: auto;
+}
+
+#raiz {
+  display: contents;
+}
+
+main {
+  flex: 1;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+p,
+ol,
+ul,
+dl,
+dd,
+blockquote {
+  margin: 0;
+}
+
+ol,
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serifa);
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 3px;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+small {
+  display: block;
+  margin-top: 0.25rem;
+  font: 400 0.875rem/1.45 var(--sans);
+  color: var(--tinta-suave);
+}
+
+/* ——— Topo: a estola na horizontal ——— */
+
+.topo {
+  --foco: var(--fio);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 2rem;
+  padding: 1rem var(--borda);
+  background: var(--estola);
+  color: var(--sobre-estola);
+}
+
+.marca {
+  font: italic 500 1.375rem/1 var(--serifa);
+  text-decoration: none;
+}
+
+.topo nav {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+  font-size: 0.9375rem;
+}
+
+.topo nav a {
+  padding-block: 0.25rem;
+  color: var(--sobre-estola-suave);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.topo nav a:hover,
+.topo nav a[aria-current] {
+  color: var(--sobre-estola);
+}
+
+.topo nav a[aria-current] {
+  border-bottom-color: var(--fio);
+}
+
+.conta {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.375rem;
+  padding-inline: 0.3rem;
+  border-radius: 1rem;
+  background: var(--fio);
+  color: var(--sobre-fio);
+  font: 600 0.75rem/1 var(--sans);
+  font-variant-numeric: tabular-nums;
+}
+
+.pular {
+  position: absolute;
+  left: var(--borda);
+  top: -4rem;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  background: var(--fio);
+  color: var(--sobre-fio);
+}
+
+.pular:focus {
+  top: 0.5rem;
+}
+
+/* ——— Botões e ações ——— */
+
+.botao {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border: 0;
+  border-radius: 3px;
+  background: var(--estola);
+  color: var(--sobre-estola);
+  font: 600 1rem/1.2 var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.botao:hover {
+  background: var(--estola-funda);
+}
+
+.discreto {
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  cursor: pointer;
+}
+
+.discreto:hover {
+  text-decoration-thickness: 2px;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+}
+
+/* ——— Início: a grade do confessionário ——— */
+
+.portal {
+  --foco: var(--fio);
+  --lx: 72%;
+  --ly: 4rem;
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: min(46rem, calc(100svh - 3.75rem));
+  padding: clamp(3rem, 9vw, 7rem) var(--borda) clamp(2.5rem, 6vw, 5rem);
+  background: var(--estola);
+  color: var(--sobre-estola);
+  overflow: hidden;
+}
+
+.grade,
+.grade::before,
+.grade::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+}
+
+/* clarão solto, por trás */
+.grade::before {
+  background: radial-gradient(
+    circle at var(--lx) var(--ly),
+    color-mix(in srgb, var(--luz) 26%, transparent),
+    transparent 34rem
+  );
+}
+
+/* a luz vista pelos losangos da grade */
+.grade::after {
+  background: radial-gradient(
+    circle at var(--lx) var(--ly),
+    var(--luz) 0,
+    color-mix(in srgb, var(--luz) 70%, var(--fio)) 9rem,
+    color-mix(in srgb, var(--fio) 55%, transparent) 20rem,
+    transparent 36rem
+  );
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M13 2.5 23.5 13 13 23.5 2.5 13z'/%3E%3C/svg%3E"),
+    linear-gradient(to bottom, #000 3rem, transparent 11.5rem);
+  mask-size:
+    26px 26px,
+    100% 100%;
+  mask-composite: intersect;
+}
+
+@media (max-width: 47.99rem) {
+  .portal {
+    padding-top: 10.5rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  .portal {
+    --lx: 79%;
+    --ly: 38%;
+  }
+
+  .grade::after {
+    mask-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M13 2.5 23.5 13 13 23.5 2.5 13z'/%3E%3C/svg%3E"),
+      linear-gradient(100deg, transparent 47%, #000 78%);
+  }
+}
+
+.portal-texto {
+  position: relative;
+  display: grid;
+  gap: 2.25rem;
+}
+
+.junto {
+  white-space: nowrap;
+}
+
+.portal h1 {
+  font-size: clamp(2.75rem, 10.5vw, 8.25rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+  max-width: 7.4em;
+}
+
+.portal p {
+  max-width: 34rem;
+  font-size: 1.1875rem;
+  color: var(--sobre-estola-suave);
+}
+
+.portal .botao {
+  background: var(--fio);
+  color: var(--sobre-fio);
+}
+
+.comecar {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.portal .comecar p {
+  font: 600 1rem/1.3 var(--sans);
+  color: var(--sobre-estola);
+}
+
+.escolha {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 11rem));
+  gap: 0.75rem;
+}
+
+.escolha .botao {
+  display: grid;
+  align-content: start;
+  gap: 0.2rem;
+  padding: 0.8rem 1rem;
+  font-size: 1.0625rem;
+}
+
+@media (max-width: 23rem) {
+  .escolha {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .escolha .botao {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.escolha small {
+  margin: 0;
+  font-weight: 400;
+  color: inherit;
+}
+
+.portal-texto > a {
+  justify-self: start;
+}
+
+.portal .botao:hover {
+  background: color-mix(in srgb, var(--fio) 86%, var(--sobre-estola));
+}
+
+/* ——— Faixas do início ——— */
+
+.faixa {
+  padding: clamp(3rem, 8vw, 6rem) var(--borda);
+  border-bottom: 1px solid var(--linha);
+}
+
+.faixa:last-child {
+  border-bottom: 0;
+}
+
+.faixa h2 {
+  font-size: 1.75rem;
+  line-height: 1.15;
+  margin-bottom: 2rem;
+}
+
+.caminho {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
+  gap: 2.5rem clamp(1.5rem, 4vw, 3.5rem);
+  counter-reset: passo;
+}
+
+.caminho li {
+  counter-increment: passo;
+  padding-top: 1rem;
+  border-top: 1px solid var(--tinta);
+}
+
+.caminho li::before {
+  content: counter(passo);
+  display: block;
+  font: 400 3.25rem/1 var(--serifa);
+  color: var(--estola);
+  margin-bottom: 0.75rem;
+}
+
+:root[data-estado='graca'] .caminho li::before {
+  color: var(--fio);
+}
+
+.caminho h3 {
+  font-size: 1.375rem;
+  margin-bottom: 0.4rem;
+}
+
+.caminho p {
+  color: var(--tinta-suave);
+}
+
+.citacao p {
+  max-width: 24em;
+  font: italic 400 clamp(1.5rem, 3.4vw, 2.5rem) / 1.25 var(--serifa);
+  letter-spacing: -0.01em;
+}
+
+.citacao footer {
+  margin-top: 1.5rem;
+  color: var(--tinta-suave);
+}
+
+.duas-colunas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 2.5rem clamp(2rem, 6vw, 6rem);
+}
+
+.duas-colunas h2 {
+  margin-bottom: 0.75rem;
+}
+
+.duas-colunas p {
+  max-width: var(--medida);
+}
+
+/* ——— Páginas de leitura ——— */
+
+.pagina {
+  padding: clamp(2.5rem, 6vw, 5rem) var(--borda) clamp(3rem, 8vw, 6rem);
+  max-width: 76rem;
+}
+
+.pagina h1 {
+  font-size: clamp(2.5rem, 6.5vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.pagina h2 {
+  font-size: 1.75rem;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.pagina > section {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.pagina > .acoes,
+.passos {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.lide {
+  max-width: var(--medida);
+  font-size: 1.1875rem;
+  color: var(--tinta-suave);
+}
+
+.fala {
+  max-width: var(--medida);
+  font: 400 1.3125rem/1.5 var(--serifa);
+}
+
+.rubrica,
+.rotulo,
+.quem,
+.cruz {
+  color: var(--rubrica);
+}
+
+.rubrica {
+  max-width: var(--medida);
+  font: italic 400 1.125rem/1.45 var(--serifa);
+}
+
+.cruz {
+  font-family: 'Segoe UI Symbol', 'Apple Symbols', 'Noto Sans Symbols 2', serif;
+  margin-inline: 0.1em 0;
+}
+
+.prece {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.prece h2 {
+  margin-bottom: 0.75rem;
+}
+
+.fonte {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--tinta-suave);
+}
+
+/* texto + margem para as notas do manual */
+.com-margem {
+  display: grid;
+  grid-template-columns: minmax(0, var(--medida));
+  gap: 0.75rem;
+}
+
+@media (min-width: 62rem) {
+  .com-margem {
+    grid-template-columns: minmax(0, var(--medida)) minmax(0, 21rem);
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+}
+
+.margem {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  padding-top: 0.3rem;
+}
+
+.nota {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--tinta-suave);
+}
+
+.nota .rotulo {
+  font: italic 500 1rem/1.3 var(--serifa);
+}
+
+.nota ul {
+  margin-top: 0.4rem;
+  padding-left: 1.1rem;
+  list-style: disc;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.notas {
+  margin-top: 0.75rem;
+}
+
+.pergunta .notas,
+.explica {
+  margin-left: 2.5rem;
+}
+
+.explica {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.nota p + p,
+.nota ul + p {
+  margin-top: 0.6rem;
+}
+
+.sobre {
+  display: grid;
+  gap: 0.9rem;
+  max-width: var(--medida);
+  margin-top: 1.75rem;
+}
+
+.notas summary {
+  width: fit-content;
+  font: italic 500 1rem/1.3 var(--serifa);
+  color: var(--rubrica);
+  cursor: pointer;
+}
+
+.notas[open] summary {
+  margin-bottom: 0.6rem;
+}
+
+.notas > * + * {
+  margin-top: 0.6rem;
+}
+
+/* Preparar */
+
+.perguntas-e-respostas,
+.requisitos {
+  display: grid;
+  gap: 2.25rem;
+}
+
+.perguntas-e-respostas dt,
+.requisitos h3 {
+  font: 500 1.375rem/1.2 var(--serifa);
+  margin-bottom: 0.5rem;
+}
+
+.requisitos h3 span {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--tinta-suave);
+}
+
+.requisitos {
+  counter-reset: condicao;
+  margin-top: 2rem;
+}
+
+.requisitos li {
+  counter-increment: condicao;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linha);
+}
+
+.requisitos h3::before {
+  content: counter(condicao, upper-roman) '. ';
+  color: var(--rubrica);
+}
+
+/* ——— Exame ——— */
+
+.exame {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.estola {
+  --foco: var(--fio);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--estola-funda);
+  color: var(--sobre-estola-suave);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.estola ol {
+  display: flex;
+  padding-inline: calc(var(--borda) - 0.75rem);
+}
+
+.estola a {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 0.75rem;
+  font: 500 1.0625rem/1 var(--serifa);
+  white-space: nowrap;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.estola a:hover,
+.estola a[aria-current] {
+  color: var(--sobre-estola);
+}
+
+.estola a[aria-current] {
+  border-bottom-color: var(--fio);
+}
+
+@media (min-width: 62rem) {
+  .exame {
+    grid-template-columns: 7.75rem minmax(0, 1fr);
+  }
+
+  .estola {
+    height: 100dvh;
+    overflow: hidden auto;
+  }
+
+  .estola ol {
+    flex-direction: column;
+    padding: 1.5rem 0;
+  }
+
+  .estola a {
+    justify-content: space-between;
+    padding: 0.7rem 0.9rem 0.7rem var(--borda);
+    padding-left: 1.5rem;
+    border-bottom: 0;
+    border-right: 3px solid transparent;
+  }
+
+  .estola a[aria-current] {
+    border-right-color: var(--fio);
+  }
+}
+
+.citacao-mandamento {
+  max-width: 22em;
+  margin-top: -0.5rem;
+  font: italic 400 clamp(1.375rem, 2.6vw, 1.75rem) / 1.25 var(--serifa);
+  color: var(--tinta-suave);
+}
+
+.exame .rubrica,
+.exame .lide,
+.exame .campo,
+.exame .marcar.simples {
+  margin-top: 1.5rem;
+}
+
+.lista-perguntas {
+  margin-top: 2.5rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+.pergunta {
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--linha);
+}
+
+.grupo {
+  padding: 2.5rem 0 0.75rem;
+  border-top: 1px solid var(--linha);
+  font: italic 500 1.25rem/1.2 var(--serifa);
+  color: var(--rubrica);
+}
+
+.marcar {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  font: 400 1.25rem/1.45 var(--serifa);
+  cursor: pointer;
+}
+
+.marcar.simples {
+  max-width: var(--medida);
+  font: 500 1.0625rem/1.45 var(--sans);
+}
+
+.marcar input {
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.2rem 0 0;
+  border: 1.5px solid var(--tinta);
+  border-radius: 2px;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.12s;
+}
+
+.marcar input[type='radio'] {
+  border-radius: 50%;
+}
+
+.tipos {
+  display: grid;
+  gap: 1rem;
+  max-width: var(--medida);
+  margin: 0 0 2.5rem;
+  padding: 0;
+  border: 0;
+}
+
+.tipos legend {
+  padding: 0;
+  margin-bottom: 1rem;
+  font: 500 1.375rem/1.2 var(--serifa);
+}
+
+.exame .tipos .marcar.simples {
+  margin-top: 0;
+}
+
+.marcar input:checked {
+  border-color: var(--estola);
+  background: var(--estola)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f3eef6' stroke-width='3'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E")
+    center / 1.1rem no-repeat;
+}
+
+:root[data-estado='graca'] .marcar input:checked {
+  border-color: var(--fio);
+  background-color: var(--fio);
+}
+
+.marcar input[type='radio']:checked {
+  background: radial-gradient(circle, var(--estola) 0 42%, transparent 46%);
+}
+
+:root[data-estado='graca'] .marcar input[type='radio']:checked {
+  background: radial-gradient(circle, var(--fio) 0 42%, transparent 46%);
+}
+
+.acuso {
+  margin: 0.5rem 0 0 2.5rem;
+  font: italic 400 1rem/1.4 var(--serifa);
+  color: var(--tinta-suave);
+}
+
+.detalhes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 1rem 0 0.25rem 2.5rem;
+  transition: opacity 0.25s;
+}
+
+@starting-style {
+  .detalhes {
+    opacity: 0;
+  }
+}
+
+.detalhes label,
+.campo {
+  display: grid;
+  gap: 0.25rem;
+  font: 500 0.875rem/1.3 var(--sans);
+  color: var(--tinta-suave);
+}
+
+.campo {
+  max-width: var(--medida);
+}
+
+.marcar + .campo {
+  margin-top: 1.5rem;
+}
+
+input:not([type]),
+textarea {
+  width: 100%;
+  padding: 0.4rem 0;
+  border: 0;
+  border-bottom: 1.5px solid var(--tinta-suave);
+  border-radius: 0;
+  background: transparent;
+  font: 400 1.0625rem/1.4 var(--sans);
+  color: var(--tinta);
+}
+
+textarea {
+  padding: 0.75rem;
+  border: 1.5px solid var(--tinta-suave);
+  border-radius: 2px;
+  resize: vertical;
+}
+
+input:not([type]):focus-visible,
+textarea:focus-visible {
+  outline: 0;
+  border-color: var(--foco);
+  box-shadow: 0 1.5px 0 var(--foco);
+}
+
+textarea:focus-visible {
+  box-shadow: 0 0 0 1.5px var(--foco);
+}
+
+::placeholder {
+  color: color-mix(in srgb, var(--tinta-suave) 70%, transparent);
+  opacity: 1;
+}
+
+.passos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+}
+
+/* ——— Confissão: página de missal ——— */
+
+.cabeca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  max-width: 47rem;
+  margin-bottom: 1.5rem;
+}
+
+.cabeca h1 {
+  margin-bottom: 0;
+}
+
+.parte {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.25rem;
+  margin-top: 1.75rem;
+  max-width: 47rem;
+}
+
+@media (min-width: 48rem) {
+  .parte {
+    grid-template-columns: 7rem minmax(0, var(--medida));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+}
+
+.parte > span:empty {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .parte > span:empty {
+    display: block;
+  }
+}
+
+.quem {
+  padding-top: 0.45rem;
+  font: 600 0.875rem/1.3 var(--sans);
+}
+
+.parte .fala > * + * {
+  margin-top: 0.9rem;
+}
+
+.parte .fala .rubrica {
+  margin-top: 1.25rem;
+}
+
+.parte .notas p {
+  font-size: 1.125rem;
+}
+
+input.em-linha {
+  display: inline-block;
+  width: 9.5em;
+  padding: 0;
+  font: inherit;
+}
+
+.vazio {
+  max-width: var(--medida);
+  color: var(--tinta-suave);
+}
+
+.acusacao {
+  display: grid;
+  gap: 1.75rem;
+  padding-block: 1.5rem;
+  border-block: 1px solid var(--linha);
+}
+
+.acusacao h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.75rem;
+  font: 600 0.9375rem/1.3 var(--sans);
+  color: var(--tinta-suave);
+}
+
+.acusacao h2 a {
+  font-weight: 400;
+}
+
+.acusacao ul {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.acusacao .rubrica {
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+}
+
+.acusacao .outros {
+  white-space: pre-wrap;
+}
+
+.anotado {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 1rem;
+  margin-top: 0.25rem;
+  color: var(--tinta-suave);
+}
+
+.anotado strong {
+  color: var(--tinta);
+  font-weight: 600;
+}
+
+/* ——— Rodapé ——— */
+
+.rodape {
+  display: grid;
+  gap: 0.6rem;
+  justify-items: start;
+  padding: 2.5rem var(--borda) 3rem;
+  border-top: 1px solid var(--linha);
+  font-size: 0.875rem;
+  color: var(--tinta-suave);
+}
+
+.rodape p {
+  max-width: 44rem;
+}
+
+.rodape .discreto {
+  color: var(--rubrica);
+}
+
+/* ——— Diálogo ——— */
+
+dialog {
+  width: min(30rem, calc(100vw - 2.5rem));
+  padding: 2rem;
+  border: 0;
+  border-radius: 4px;
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+dialog::backdrop {
+  background: color-mix(in srgb, var(--estola-funda) 72%, transparent);
+}
+
+dialog h2 {
+  font-size: 1.75rem;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+dialog .acoes {
+  margin-top: 1.75rem;
+}
+
+/* ——— A absolvição: a luz abre-se a partir do botão ——— */
+
+.absolvicao::view-transition-old(root) {
+  animation: none;
+}
+
+.absolvicao::view-transition-new(root) {
+  animation: abrir-luz 1.5s cubic-bezier(0.3, 0.6, 0.15, 1);
+}
+
+@keyframes abrir-luz {
+  from {
+    clip-path: circle(0 at var(--vx) var(--vy));
+  }
+  to {
+    clip-path: circle(150vmax at var(--vx) var(--vy));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
