@@ -222,7 +222,8 @@ export function Exame({ passo = 'inicio' }: { passo?: string }) {
         </ol>
       </nav>
 
-      <div className="pagina">
+      {/* a chave refaz o bloco a cada passo, para a animação de entrada tocar de novo */}
+      <div className="pagina" key={atual.id}>
         {secao ? (
           <Perguntas secao={secao} estado={estado} />
         ) : atual.id === 'outros' ? (

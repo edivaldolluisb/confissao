@@ -713,6 +713,9 @@ small {
   white-space: nowrap;
   text-decoration: none;
   border-bottom: 3px solid transparent;
+  transition:
+    color 0.15s,
+    border-color 0.2s;
 }
 
 .estola a:hover,
@@ -806,7 +809,13 @@ small {
   border-radius: 2px;
   background: transparent;
   cursor: pointer;
-  transition: background-color 0.12s;
+  transition:
+    background-color 0.12s,
+    scale 0.12s;
+}
+
+.marcar input:active {
+  scale: 0.92;
 }
 
 .marcar input[type='radio'] {
@@ -836,7 +845,18 @@ small {
   border-color: var(--estola);
   background: var(--estola)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f3eef6' stroke-width='3'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E")
-    center / 1.1rem no-repeat;
+    center / 1.1rem 1.1rem no-repeat;
+}
+
+/* o visto (ou o ponto do rádio) cresce a partir do centro */
+.marcar input:checked {
+  animation: marcar 0.2s ease-out;
+}
+
+@keyframes marcar {
+  from {
+    background-size: 0 0;
+  }
 }
 
 :root[data-estado='graca'] .marcar input:checked {
@@ -845,11 +865,13 @@ small {
 }
 
 .marcar input[type='radio']:checked {
-  background: radial-gradient(circle, var(--estola) 0 42%, transparent 46%);
+  background: radial-gradient(circle, var(--estola) 0 42%, transparent 46%) center / 100% 100%
+    no-repeat;
 }
 
 :root[data-estado='graca'] .marcar input[type='radio']:checked {
-  background: radial-gradient(circle, var(--fio) 0 42%, transparent 46%);
+  background: radial-gradient(circle, var(--fio) 0 42%, transparent 46%) center / 100% 100%
+    no-repeat;
 }
 
 .acuso {
@@ -863,12 +885,43 @@ small {
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   gap: 1rem 1.5rem;
   margin: 1rem 0 0.25rem 2.5rem;
-  transition: opacity 0.25s;
+}
+
+.detalhes,
+.acuso {
+  transition:
+    opacity 0.25s,
+    translate 0.25s;
+}
+
+.conta {
+  transition:
+    opacity 0.2s,
+    scale 0.2s;
 }
 
 @starting-style {
-  .detalhes {
+  .detalhes,
+  .acuso {
     opacity: 0;
+    translate: 0 -4px;
+  }
+
+  .conta {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+
+/* cada passo do exame entra a subir, de leve */
+.exame .pagina {
+  animation: entrar 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@keyframes entrar {
+  from {
+    opacity: 0;
+    translate: 0 8px;
   }
 }
 
@@ -1117,5 +1170,6 @@ dialog .acoes {
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
+    animation: none !important;
   }
 }
