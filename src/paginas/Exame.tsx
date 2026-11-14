@@ -208,7 +208,7 @@ export function Exame({ passo = 'inicio' }: { passo?: string }) {
             return (
               <li key={p.id}>
                 <a
-                  href={`#/exame/${p.id}`}
+                  href={`/exame/${p.id}`}
                   aria-current={i === indice ? 'step' : undefined}
                   aria-label={n ? `${p.titulo}, ${n} marcados` : p.titulo}
                   title={p.titulo}
@@ -233,15 +233,15 @@ export function Exame({ passo = 'inicio' }: { passo?: string }) {
 
         <nav className="passos" aria-label="Avançar no exame">
           {seguinte ? (
-            <a className="botao" href={`#/exame/${seguinte.id}`}>
+            <a className="botao" href={`/exame/${seguinte.id}`}>
               Seguinte: {seguinte.titulo}
             </a>
           ) : (
-            <a className="botao" href="#/confissao">
+            <a className="botao" href="/confissao">
               Ver a minha confissão
             </a>
           )}
-          {anterior && <a href={`#/exame/${anterior.id}`}>Voltar: {anterior.titulo}</a>}
+          {anterior && <a href={`/exame/${anterior.id}`}>Voltar: {anterior.titulo}</a>}
         </nav>
       </div>
     </div>

@@ -44,19 +44,32 @@ const assinar = (o: () => void) => {
 
 export const useEstado = () => useSyncExternalStore(assinar, () => estado)
 
-// Rota por hash: "#/exame/3" -> ['exame', '3']
-const lerRota = () => location.hash.replace(/^#\/?/, '')
+// Rota pelo caminho do endereço: "/exame/m7" -> ['exame', 'm7'].
+// Exige que o servidor devolva index.html para qualquer caminho; sem isso, abrir ou
+// recarregar um endereço como /exame/m7 dá 404. (vite dev e vite preview já o fazem.)
+if (location.hash.startsWith('#/')) history.replaceState(null, '', location.hash.slice(1)) // endereços antigos, com #
+
+const lerRota = () => location.pathname.replace(/^\/+|\/+$/g, '')
 const assinarRota = (o: () => void) => {
-  addEventListener('hashchange', o)
-  return () => removeEventListener('hashchange', o)
+  addEventListener('popstate', o)
+  return () => removeEventListener('popstate', o)
 }
 export const useRota = () => useSyncExternalStore(assinarRota, lerRota).split('/')
 
-// Navegação síncrona: o hashchange nativo só dispara depois, tarde demais para uma view transition.
+// Navegação síncrona, para caber dentro de uma view transition.
 export function irPara(rota: string) {
-  location.hash = `#/${rota}`
-  dispatchEvent(new HashChangeEvent('hashchange'))
+  history.pushState(null, '', `/${rota}`)
+  dispatchEvent(new PopStateEvent('popstate'))
 }
+
+// Links internos navegam sem recarregar a página.
+addEventListener('click', (e) => {
+  const a = e.target instanceof Element ? e.target.closest('a') : null
+  if (!a || a.origin !== location.origin || a.target || a.hasAttribute('download')) return
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+  e.preventDefault()
+  if (a.pathname !== location.pathname) irPara(a.pathname.slice(1))
+})
 
 const consultaLarga = matchMedia('(min-width: 62rem)')
 const assinarLargura = (o: () => void) => {

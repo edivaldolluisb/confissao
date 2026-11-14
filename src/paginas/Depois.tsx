@@ -54,7 +54,7 @@ export function Depois() {
       </section>
 
       <div className="acoes">
-        <a className="botao" href="#/">
+        <a className="botao" href="/">
           Voltar ao início
         </a>
       </div>

@@ -107,7 +107,7 @@ export function Confissao() {
         <span className="quem">Penitente</span>
         {listaVazia(estado) ? (
           <p className="vazio">
-            Ainda não há nada marcado. <a href="#/exame">Fazer o exame de consciência</a> preenche esta
+            Ainda não há nada marcado. <a href="/exame">Fazer o exame de consciência</a> preenche esta
             parte.
           </p>
         ) : (
@@ -115,7 +115,7 @@ export function Confissao() {
             {grupos.map(({ secao, itens }) => (
               <section key={secao.id}>
                 <h2>
-                  {secao.titulo} <a href={`#/exame/${secao.id}`}>Rever</a>
+                  {secao.titulo} <a href={`/exame/${secao.id}`}>Rever</a>
                 </h2>
                 <ul>
                   {itens.map(({ pergunta, marca }, i) => (
@@ -140,7 +140,7 @@ export function Confissao() {
             {estado.outros.trim() && (
               <section>
                 <h2>
-                  Outros pecados <a href="#/exame/outros">Rever</a>
+                  Outros pecados <a href="/exame/outros">Rever</a>
                 </h2>
                 <p className="fala outros">{estado.outros}</p>
               </section>

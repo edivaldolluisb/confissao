@@ -58,7 +58,7 @@ export function Preparar() {
       </section>
 
       <div className="acoes">
-        <a className="botao" href="#/exame">
+        <a className="botao" href="/exame">
           Fazer o exame de consciência
         </a>
       </div>

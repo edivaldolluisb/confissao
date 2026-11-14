@@ -19,7 +19,7 @@ function Escolha({ rotulo }: { rotulo: string }) {
       <p id="comecar">{rotulo}</p>
       <nav className="escolha" aria-labelledby="comecar">
         {tipos.map((t) => (
-          <a className="botao" href="#/exame" key={t.nivel} onClick={() => definir({ tipo: t.nivel })}>
+          <a className="botao" href="/exame" key={t.nivel} onClick={() => definir({ tipo: t.nivel })}>
             {t.nome}
             <small>
               {contarItens(t.nivel)} {t.unidade}
@@ -50,7 +50,7 @@ export function Inicio() {
                 {estado.penitencia && !estado.penitenciaCumprida && ' Há uma penitência por cumprir.'}
               </p>
               <div className="acoes">
-                <a className="botao" href="#/depois">
+                <a className="botao" href="/depois">
                   Rezar a oração de depois
                 </a>
               </div>
@@ -67,15 +67,15 @@ export function Inicio() {
               </p>
               {emCurso ? (
                 <div className="acoes">
-                  <a className="botao" href="#/exame">
+                  <a className="botao" href="/exame">
                     Continuar o exame de consciência
                   </a>
-                  <a href="#/confissao">Ver o que dizer ao sacerdote</a>
+                  <a href="/confissao">Ver o que dizer ao sacerdote</a>
                 </div>
               ) : (
                 <>
                   <Escolha rotulo="Começar o exame de consciência" />
-                  <a href="#/confissao">Ver o que dizer ao sacerdote</a>
+                  <a href="/confissao">Ver o que dizer ao sacerdote</a>
                 </>
               )}
             </>
@@ -88,13 +88,13 @@ export function Inicio() {
         <ol className="caminho">
           <li>
             <h3>
-              <a href="#/preparar">Preparar</a>
+              <a href="/preparar">Preparar</a>
             </h3>
             <p>O que é pecado mortal e as cinco condições para uma confissão válida.</p>
           </li>
           <li>
             <h3>
-              <a href="#/exame">Examinar</a>
+              <a href="/exame">Examinar</a>
             </h3>
             <p>
               Mandamento por mandamento, em três tamanhos: rápido, médio ou completo. Marcar o que
@@ -103,7 +103,7 @@ export function Inicio() {
           </li>
           <li>
             <h3>
-              <a href="#/confissao">Confessar</a>
+              <a href="/confissao">Confessar</a>
             </h3>
             <p>
               As palavras do rito com a lista do exame no lugar certo, para ler no confessionário com a
@@ -112,7 +112,7 @@ export function Inicio() {
           </li>
           <li>
             <h3>
-              <a href="#/depois">Agradecer</a>
+              <a href="/depois">Agradecer</a>
             </h3>
             <p>Recebida a absolvição, a lista é apagada. Ficam a oração e a penitência anotada.</p>
           </li>

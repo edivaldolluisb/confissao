@@ -565,7 +565,25 @@ small {
   display: grid;
   gap: 0.75rem;
   align-content: start;
+  justify-items: start;
   padding-top: 0.3rem;
+}
+
+.margem-corpo {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* umas dez linhas; o valor casa com LINHAS_REM em comum.tsx */
+.margem-corpo[data-recolhida] {
+  max-height: 13rem;
+  overflow: hidden;
+  mask-image: linear-gradient(#000 calc(100% - 2.5rem), transparent);
+}
+
+.margem .discreto {
+  font-size: 0.875rem;
+  color: var(--rubrica);
 }
 
 .nota {

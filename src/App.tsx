@@ -39,12 +39,12 @@ export function App() {
         <button className="pular" onClick={() => conteudo.current?.focus()}>
           Ir para o conteúdo
         </button>
-        <a className="marca" href="#/" aria-current={pagina === '' ? 'page' : undefined}>
+        <a className="marca" href="/" aria-current={pagina === '' ? 'page' : undefined}>
           O Hiponense
         </a>
         <nav aria-label="Principal">
           {paginas.map((p) => (
-            <a key={p.rota} href={`#/${p.rota}`} aria-current={pagina === p.rota ? 'page' : undefined}>
+            <a key={p.rota} href={`/${p.rota}`} aria-current={pagina === p.rota ? 'page' : undefined}>
               {p.nome}
               {p.rota === 'confissao' && marcados > 0 && (
                 <span className="conta" aria-label={`${marcados} marcados`}>
