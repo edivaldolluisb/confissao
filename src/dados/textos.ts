@@ -49,6 +49,8 @@ export const oracaoDepois: Oracao = {
 
 // Apresentação do "Exame de consciência para adultos".
 export const sobreOExame = [
+  'As perguntas deste exame servem para ajudar a recordar ações, palavras, pensamentos consentidos e omissões. Não substituem a consciência pessoal nem a orientação do confessor. Se você não souber como avaliar uma situação, apresente-a ao sacerdote com simplicidade e peça orientação.',
+  'Uma tentação, ou um pensamento que surge sem ser procurado, não é por si só uma escolha deliberada. O que se examina é se ele foi acolhido voluntariamente, consentido ou alimentado; não é preciso repassar um a um todos os pensamentos que vieram à mente.',
   'Esse exame de consciência tem como objetivo ajudar os fiéis a fazer uma boa confissão. Ele é indicado para adultos (a partir de 14 anos, aproximadamente), contendo pecados específicos contra o 6º e 9º mandamentos. Ele não contém todos os pecados possíveis, como é evidente, mas serve como um guia para ajudar a esclarecer a consciência, a partir das leis objetivas da moral.',
   'Além disso, os pecados mencionados não têm necessariamente a mesma gravidade. Alguns são por si veniais, outros mortais, outros podem ser veniais ou mortais, conforme o caso. Por exemplo, um furto pode ser um pecado mortal ou venial, dependendo da quantia furtada.',
 ]
@@ -92,7 +94,7 @@ export const pecadoMortal = [
   {
     pergunta: 'O que é matéria grave?',
     resposta:
-      'Deus nos proibiu de fazer certas coisas e também nos mandou fazer outras coisas, para que assim nós evitássemos o Inferno e alcançássemos o Céu. Estas leis estão contidas nos Dez Mandamentos dados por Deus a Moisés no Antigo Testamento, bem como nos Cinco Mandamentos da Igreja. Todas as nossas ações ou omissões (deliberadas) que são gravemente contrárias a essas leis de Deus são pecados mortais. Em outras palavras, é pecado mortal toda ação humana deliberada que é gravemente contrária: i) ao amor devido a Deus, ii) à benevolência devida ao próximo, iii) à castidade, e iv) aos cinco mandamentos da Igreja.',
+      'Deus nos proibiu de fazer certas coisas e também nos mandou fazer outras coisas, para que assim nós evitássemos o Inferno e alcançássemos o Céu. Estas leis estão contidas nos Dez Mandamentos dados por Deus a Moisés no Antigo Testamento, bem como nos Cinco Mandamentos da Igreja. É matéria grave o que é gravemente contrário a essas leis: i) ao amor devido a Deus, ii) à benevolência devida ao próximo, iii) à castidade, e iv) aos cinco mandamentos da Igreja. A matéria grave sozinha não basta: para haver pecado mortal, é preciso também plena advertência e pleno consentimento.',
   },
   {
     pergunta: 'O que é plena advertência?',
@@ -103,7 +105,7 @@ export const pecadoMortal = [
     pergunta: 'O que é pleno consentimento?',
     resposta:
       'O pleno consentimento é um ato da vontade. Depois que a nossa consciência já percebeu a gravidade daquele pensamento ou daquele ato, nós podemos decidir se iremos ou não fazer aquilo. Se mesmo depois de tomar consciência da gravidade da coisa nós decidimos livremente fazê-la, então houve o pleno consentimento na coisa má, e consequentemente houve um pecado mortal.',
-    nota: 'Se, depois de examinar bem a sua consciência, você não consegue ter certeza se teve plena advertência e pleno consentimento em um pecado, confesse-o mesmo assim, para que sua consciência não fique atribulada.',
+    nota: 'Se, depois de examinar bem a sua consciência, você não consegue ter certeza se teve plena advertência e pleno consentimento em um pecado, não tire uma conclusão automática: apresente a dúvida ao confessor, dizendo-lhe que não tem certeza, para que sua consciência não fique atribulada.',
   },
 ]
 
