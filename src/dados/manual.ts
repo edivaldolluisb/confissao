@@ -9,6 +9,16 @@ const obs = (texto: string, itens?: string[]): Nota => ({ rotulo: 'Observação'
 const exemplo = (texto: string): Nota => ({ rotulo: 'Por exemplo', texto })
 const q = (texto: string, ...notas: Nota[]): Entrada => ({ texto, notas: notas.length ? notas : undefined })
 
+// Para perguntas sobre pensamentos, desejos e outras matérias interiores.
+const tentacao = obs(
+  'Uma tentação, ou um pensamento que surge sem ser procurado, não é por si só uma escolha deliberada. O que se examina é se ele foi acolhido voluntariamente, consentido ou alimentado.',
+)
+const duvida: Nota = {
+  rotulo: 'Em caso de dúvida',
+  texto:
+    'Se você não tem certeza de ter consentido ou de como avaliar esta situação, não tire uma conclusão automática; apresente a dúvida ao confessor.',
+}
+
 const TIPO_DE_PESSOA =
   'pessoa solteira, casada, virgem, criança, prostituta, do mesmo sexo, celibatária, consagrada a Deus, portadora de necessidade especial.'
 
@@ -65,7 +75,7 @@ export const RAPIDO = [
   // 9º
   'Consenti em pensamentos, desejos ou olhares',
   // 10º
-  'Fiquei triste ou com raiva por ver que uma pessoa tinha algum bem material',
+  'Alimentei tristeza ou raiva por ver que uma pessoa tinha algum bem material',
   'Dei mais valor aos bens materiais',
   // preceitos da Igreja
   'Recebi a Sagrada Eucaristia',
@@ -119,7 +129,7 @@ export const manual: Record<string, Entrada[]> = {
       'Participei ativamente de alguma cerimônia ou culto não católico?',
       exemplo('Tomar a “ceia” protestante, ajudar num culto protestante etc.'),
       atencao(
-        'Participar ativamente dessas cerimônias seria pecado mortal, porque estaríamos agindo como se o culto protestante estivesse no mesmo nível da Santa Missa, ou como se o pastor protestante estivesse no mesmo nível do sacerdote católico.',
+        'Participar ativamente dessas cerimônias seria matéria grave, porque estaríamos agindo como se o culto protestante estivesse no mesmo nível da Santa Missa, ou como se o pastor protestante estivesse no mesmo nível do sacerdote católico.',
       ),
       obs(
         'É muito recomendado que um católico evite frequentar inclusive casamentos e funerais em outras religiões. Mas se um motivo familiar exigisse a presença do católico nessas cerimônias, ele poderia assistir a elas como um mero espectador, desde que não houvesse risco de abalar a sua fé ou escandalizar outros católicos.',
@@ -144,7 +154,7 @@ export const manual: Record<string, Entrada[]> = {
     q(
       'Invoquei a Satanás? Li textos, assisti a vídeos e filmes ou ouvi músicas que invocam explicitamente a Satanás?',
     ),
-    q('Não professei externamente a minha fé católica quando havia necessidade grave de fazê-lo?', { rotulo: "Permanecer em silêncio quando questionado sobre a própria fé", texto: "É pecado grave, se se trata da autoridade legítima que questiona." }),
+    q('Não professei externamente a minha fé católica quando havia necessidade grave de fazê-lo?', { rotulo: "Permanecer em silêncio quando questionado sobre a própria fé", texto: "É matéria grave, se se trata da autoridade legítima que questiona." }),
     q(
       'Recebi os sacramentos sem respeito ou sem fé? Recebi o Crisma, a Eucaristia, o Matrimônio, a Ordem em pecado mortal?', { texto: "É sacrilégio receber um sacramento, especialmente a Santa Eucaristia, em estado de pecado mortal." },
     ),
@@ -157,6 +167,7 @@ export const manual: Record<string, Entrada[]> = {
     ),
     q(
       'Tive ódio a Deus? Revoltei-me contra Deus, por exemplo, por ter nascido com esta aparência, com este sexo (masculino ou feminino), com esta condição social ou por ter perdido um parente?', { texto: "Inclui o ódio à Igreja Católica." },
+      duvida,
     ),
   ],
 
@@ -185,9 +196,9 @@ export const manual: Record<string, Entrada[]> = {
 
   m3: [
     q(
-      'Faltei à Missa nos domingos ou nos dias santos de guarda, por culpa própria?', { rotulo: "Primeiro preceito da Igreja", texto: "Assistir à Santa Missa todos os domingos e dias santos de guarda. São nove os dias de preceito no Brasil, já que a São José (19 de março) não o é. Muitos desses dias são transferidos para o Domingo seguinte, pelo fato de não haver feriado civil.", itens: ["Natal do Senhor (25 de dezembro)", "Circuncisão do Senhor (1º de janeiro)", "Epifania (6 de janeiro. No Brasil, transferido para o Domingo seguinte)", "Ascensão (quarenta dias depois da Páscoa. No Brasil, transferido para o Domingo seguinte)", "Corpus Christi (quinta-feira depois do Domingo da Santíssima Trindade)", "Santos Apóstolos Pedro e Paulo (29 de junho. No Brasil, transferido para o Domingo seguinte)", "A Assunção da Santíssima Virgem (15 de agosto. No Brasil, transferido para o Domingo seguinte)", "Todos os Santos (1º de novembro. No Brasil, transferido para o Domingo seguinte)", "Imaculada Conceição da Santíssima Virgem (8 de dezembro)"] }, { texto: "A Santa Igreja nos obriga a nos abster de todo trabalho servil nos Dias Santos de Guarda, como nos Domingos, na medida do possível. Os católicos que devem trabalhar nos Dias Santos de Guarda são obrigados a assistir a Santa Missa a não ser que sejam escusados por uma causa proporcionalmente grave. Esse preceito pode ser violado ao não assistir a Missa nos dias prescritos ou ao se chegar atrasado à Missa sem razão suficiente. Dependendo da qualidade e da quantidade do atraso, pode ser pecado leve ou grave." },
+      'Faltei à Missa nos domingos ou nos dias santos de guarda, por culpa própria?', { rotulo: "Primeiro preceito da Igreja", texto: "Assistir à Santa Missa todos os domingos e dias santos de guarda. O direito da Igreja (cân. 1246) prevê os dias de preceito abaixo, mas a conferência episcopal de cada país pode suprimir alguns ou transferi-los para o domingo. Consulte o calendário da sua diocese para saber quais valem onde você vive.", itens: ["Natal do Senhor (25 de dezembro)", "Santa Maria, Mãe de Deus (1º de janeiro)", "Epifania (6 de janeiro)", "São José (19 de março)", "Ascensão (quarenta dias depois da Páscoa)", "Corpus Christi (quinta-feira depois do Domingo da Santíssima Trindade)", "Santos Apóstolos Pedro e Paulo (29 de junho)", "A Assunção da Santíssima Virgem (15 de agosto)", "Todos os Santos (1º de novembro)", "Imaculada Conceição da Santíssima Virgem (8 de dezembro)"] }, { texto: "A Santa Igreja nos obriga a nos abster de todo trabalho servil nos Dias Santos de Guarda, como nos Domingos, na medida do possível. Os católicos que devem trabalhar nos Dias Santos de Guarda são obrigados a assistir a Santa Missa a não ser que sejam escusados por uma causa proporcionalmente grave. Esse preceito pode ser violado ao não assistir a Missa nos dias prescritos ou ao se chegar atrasado à Missa sem razão suficiente. Dependendo da qualidade e da quantidade do atraso, pode ser pecado leve ou grave." },
       atencao(
-        'No Brasil, a maioria dos dias santos de guarda é transferida para o domingo; porém, existem quatro dias santos de guarda que não são transferidos para o domingo: Santa Maria Mãe de Deus (1º de janeiro), Corpus Christi, Imaculada Conceição (8 de dezembro) e Natal do Senhor (25 de dezembro). Este preceito obriga todos os fiéis batizados que possuem uso da razão e já tenham completado sete anos de idade. Para cumprir o preceito é necessário: i) estar presente corporalmente na igreja; ii) prestar uma atenção mínima durante a Missa. Não cumpre o preceito quem ouve a Missa pelo rádio ou assiste pela televisão.',
+        'Em muitos países, alguns destes dias são transferidos para o domingo ou deixam de ser de preceito; por isso, confira quais são os dias de preceito onde você vive. Este preceito obriga todos os fiéis batizados que possuem uso da razão e já tenham completado sete anos de idade. Para cumprir o preceito é necessário: i) estar presente corporalmente na igreja; ii) prestar uma atenção mínima durante a Missa. Não cumpre o preceito quem ouve a Missa pelo rádio ou assiste pela televisão.',
       ),
     ),
     q(
@@ -214,6 +225,7 @@ export const manual: Record<string, Entrada[]> = {
     ),
     q(
       'Desejei a desgraça aos meus pais? Desejei a morte aos meus pais? Desejei, por egoísmo, receber a herança?',
+      tentacao,
     ),
     q(
       'Nunca rezo pelos meus pais?',
@@ -232,7 +244,7 @@ export const manual: Record<string, Entrada[]> = {
     ),
     q(
       'Levantei a mão contra os meus pais? Bati nos meus pais?',
-      atencao('A agressão aos pais é pecado mortal, ainda que a lesão causada seja leve.'),
+      atencao('A agressão aos pais é matéria grave, ainda que a lesão causada seja leve.'),
     ),
     q('Entristeci gravemente os meus pais com palavras, gestos ou ações?'),
     q(
@@ -255,7 +267,7 @@ export const manual: Record<string, Entrada[]> = {
     ),
 
     { grupo: 'Manual de Confissão: para os que têm filhos' },
-    q('Por negligência, deixei de conduzir meus filhos ao Batismo o mais rápido possível?', { texto: "Mais de um mês é considerado, em geral, pecado mortal." }),
+    q('Por negligência, deixei de conduzir meus filhos ao Batismo o mais rápido possível?', { texto: "Mais de um mês é considerado, em geral, matéria grave." }),
     q(
       'Não cumpri a grave obrigação que tenho de educar meus filhos na fé católica, deixando de ensinar-lhes a doutrina da Igreja, a digna recepção dos sacramentos, para que assim tivessem o suficiente para perseverar até a morte no estado de graça?',
       obs(
@@ -282,7 +294,7 @@ export const manual: Record<string, Entrada[]> = {
   ],
 
   m5: [
-    q('Desejei o mal a alguém? Desejei a doença ou a desgraça a alguém? Desejei o Inferno a alguém?'),
+    q('Desejei o mal a alguém? Desejei a doença ou a desgraça a alguém? Desejei o Inferno a alguém?', tentacao),
     q('Agredi injustamente alguma pessoa?'),
     q('Ofendi alguém, xingando, amaldiçoando, zombando? Escandalizei outras pessoas com tais ofensas?'),
     q(
@@ -299,20 +311,25 @@ export const manual: Record<string, Entrada[]> = {
     q(
       'Apoiei, conscientemente, políticos que promovem o aborto, a eutanásia, o divórcio, a ideologia de gênero, o homossexualismo, a legalização das drogas, a abolição da propriedade privada?',
     ),
-    q('Usei métodos abortivos?', { rotulo: "Contraceptivos que podem ou não ser abortivos", texto: "Pílulas e outros: apesar da prática generalizada mesmo entre católicos, trata-se de pecado mortal, ainda que haja motivos legítimos para evitar os filhos." }, exemplo('Anticoncepcionais, DIU, pílula do dia seguinte etc.')),
+    q('Usei métodos abortivos?', { rotulo: "Contraceptivos que podem ou não ser abortivos", texto: "Pílulas e outros: apesar da prática generalizada mesmo entre católicos, trata-se de matéria grave, ainda que haja motivos legítimos para evitar os filhos." }, exemplo('Anticoncepcionais, DIU, pílula do dia seguinte etc.')),
     q(
       'Pratiquei a eutanásia, apressando a morte de uma pessoa idosa ou doente? Aconselhei alguém a praticar a eutanásia? Defendi que as pessoas têm direito à eutanásia?', { rotulo: "Colaboração", texto: "Vale também para quem participou, instigou, aconselhou, consentiu ou se calou podendo impedir." },
     ),
     q(
-      'Fiz fertilização in vitro? Obriguei ou aconselhei o uso desse método? Afirmei ou defendi que uma pessoa pode usar métodos artificiais de concepção?', { rotulo: "Inseminação artificial, fertilização in vitro ou algo semelhante", texto: "Apesar da prática muito generalizada, mesmo entre católicos, trata-se de pecado mortal." },
+      'Fiz fertilização in vitro? Obriguei ou aconselhei o uso desse método? Afirmei ou defendi que uma pessoa pode usar métodos artificiais de concepção?', { rotulo: "Inseminação artificial, fertilização in vitro ou algo semelhante", texto: "Apesar da prática muito generalizada, mesmo entre católicos, trata-se de matéria grave." },
     ),
     q(
-      'Retirei alguma parte significativa do meu corpo desnecessariamente? Fiz alguma esterilização (vasectomia, ligadura de trompas etc.)?', { rotulo: "Vasectomia, ligadura ou outro procedimento para evitar os filhos", texto: "Apesar da prática muito generalizada, mesmo entre católicos, trata-se de pecado mortal, ainda que haja motivos legítimos para evitar os filhos. É preciso buscar a reversão da cirurgia, se ainda existe a possibilidade de fertilidade." }, { rotulo: "Mutilação do corpo", texto: "Como castração, por exemplo." },
+      'Retirei alguma parte significativa do meu corpo desnecessariamente? Fiz alguma esterilização (vasectomia, ligadura de trompas etc.)?', { rotulo: "Vasectomia, ligadura ou outro procedimento para evitar os filhos", texto: "Apesar da prática muito generalizada, mesmo entre católicos, trata-se de matéria grave, ainda que haja motivos legítimos para evitar os filhos. É preciso buscar a reversão da cirurgia, se ainda existe a possibilidade de fertilidade." }, { rotulo: "Mutilação do corpo", texto: "Como castração, por exemplo." },
       atencao(
         'É permitido retirar alguma parte do corpo para a preservação da vida, por exemplo: amputar um pé, um braço etc. É permitido, inclusive, retirar um dos órgãos ligados à reprodução humana (útero, ovários, testículos etc.), desde que seja para salvar a vida e haja reta intenção.',
       ),
     ),
-    q('Tentei diretamente o suicídio? Induzi, instiguei ou auxiliei alguém a praticar suicídio?', { texto: "Inclui os sérios pensamentos de cometer suicídio." }),
+    q(
+      'Tentei diretamente o suicídio? Induzi, instiguei ou auxiliei alguém a praticar suicídio?',
+      { texto: 'Inclui alimentar deliberadamente a intenção de cometer suicídio.' },
+      duvida,
+      { rotulo: 'Se você está passando por isso', texto: 'Procure ajuda agora: fale com alguém de confiança ou ligue para o número de emergência ou para uma linha de apoio emocional do seu país.' },
+    ),
     q(
       'Usei, por mero prazer, bebidas alcoólicas até perder completamente o uso da razão? Usei drogas ilícitas?', { rotulo: "Embriaguez", texto: "Em que grau?" }, { texto: "Inclui o abuso de álcool, medicamentos ou drogas." },
     ),
@@ -356,7 +373,7 @@ export const manual: Record<string, Entrada[]> = {
       ),
     ),
     q(
-      'Usei métodos contraceptivos (por exemplo: pílula do dia seguinte, anticoncepcional, DIU, camisinha)? Obriguei ou aconselhei o uso de contraceptivos? Afirmei ou defendi que uma pessoa pode usar métodos contraceptivos?', { rotulo: "Métodos profiláticos ou de barreira para evitar a gravidez", texto: "Apesar da prática generalizada mesmo entre católicos, trata-se de pecado mortal, ainda que haja motivos legítimos para evitar os filhos." },
+      'Usei métodos contraceptivos (por exemplo: pílula do dia seguinte, anticoncepcional, DIU, camisinha)? Obriguei ou aconselhei o uso de contraceptivos? Afirmei ou defendi que uma pessoa pode usar métodos contraceptivos?', { rotulo: "Métodos profiláticos ou de barreira para evitar a gravidez", texto: "Apesar da prática generalizada mesmo entre católicos, trata-se de matéria grave, ainda que haja motivos legítimos para evitar os filhos." },
     ),
     q(
       'Usei métodos artificiais de concepção que dispensam a relação sexual? Obriguei ou aconselhei o uso desses métodos? Afirmei ou defendi que uma pessoa pode usar métodos artificiais de concepção?',
@@ -400,7 +417,7 @@ export const manual: Record<string, Entrada[]> = {
     q(
       'Pequei por pornografia com textos, fotos ou vídeos de conteúdo sexual explícito? Tenho o hábito de cair neste pecado? Mantive as ocasiões de cair na pornografia? Confessei-me sem ter a firme decisão de deixar essas práticas? Confessei-me sem ter a firme decisão de deixar as ocasiões próximas desse pecado?', { texto: "Inclui comprar, alugar ou assistir filmes, programas de TV ou ler livros, revistas ou outras coisas indecentes. Não somente pornografia, mas também tudo que contenha impurezas, o que é generalizado hoje." },
       atencao(
-        'Não somente a pornografia explícita é pecado mortal. Os livros, filmes, vídeos ou programas de televisão que possuem conteúdo erótico também são matéria de pecado mortal.',
+        'Não somente a pornografia explícita é matéria grave. Os livros, filmes, vídeos ou programas de televisão que possuem conteúdo erótico também são.',
       ),
     ),
     q(
@@ -408,6 +425,7 @@ export const manual: Record<string, Entrada[]> = {
     ),
     q(
       'Pequei por masturbação, ou seja, toquei o meu corpo com o fim de obter prazer sexual? Tenho o hábito de cair neste pecado? Mantive as ocasiões de cair na masturbação? Confessei-me sem ter a firme decisão de deixar essa prática? Confessei-me sem ter a firme decisão de deixar as ocasiões próximas desse pecado?',
+      duvida,
     ),
     q(
       'Toquei, abracei ou beijei uma pessoa buscando prazer sexual?', { texto: "Inclui o beijo sensual, prolongado, e as carícias ou preliminares fora do contexto do matrimônio, ou dentro dele sem serem ordenadas à consumação do ato conjugal natural, com perigo de polução." },
@@ -460,7 +478,7 @@ export const manual: Record<string, Entrada[]> = {
     q(
       'Danifiquei injustamente a propriedade ou os bens de uma outra pessoa? Reparei os danos?', { texto: "Seja por descuido, seja por malícia." },
       obs(
-        'Não é um dano injusto se uma mãe queima um livro pornográfico do seu filho: nesse caso, a mãe tem o direito de causar esse dano ao filho, pois na verdade ela quer evitar que o filho cometa um pecado mortal e seja merecedor do Inferno.',
+        'Se o filho é menor, a mãe pode, no cumprimento do seu dever de o proteger e educar, retirar-lhe o acesso ao livro pornográfico e tomar medidas proporcionais para impedir que o utilize, explicando-lhe a razão com calma e caridade. Isso não permite afirmar automaticamente que queimar um livro que lhe pertence seja sempre justo; e, embora o uso deliberado de pornografia seja matéria grave, não se deve concluir apenas pela existência do livro que o filho cometeu pecado mortal ou está condenado.',
       ),
     ),
     q('Obtive algum bem ou vantagem por meio de fraude ou enganação?'),
@@ -485,7 +503,7 @@ export const manual: Record<string, Entrada[]> = {
       ),
     ),
     q(
-      'Caluniei alguém, dizendo que a pessoa cometeu algum crime ou pecado grave que eu sabia claramente que ela não tinha cometido? Colaborei com a divulgação de calúnias? Reparei a calúnia ou estou disposto a repará-la?', { rotulo: "Dano injusto ao nome alheio", texto: "Seja pela revelação de faltas verdadeiras escondidas (detração); revelação de falsos defeitos (calúnia ou difamação); contando histórias ou espalhando rumores. É preciso restituir a boa fama que foi injustamente prejudicada." },
+      'Caluniei alguém, dizendo que a pessoa cometeu algum crime ou pecado grave que eu sabia claramente que ela não tinha cometido? Colaborei com a divulgação de calúnias? Reparei a calúnia ou estou disposto a repará-la?', { rotulo: "Dano injusto ao nome alheio", texto: "Seja pela revelação de faltas verdadeiras escondidas (detração); revelação de falsos defeitos (calúnia ou difamação); contando histórias ou espalhando rumores. Quem prejudicou injustamente a boa fama de alguém deve procurar repará-la, de modo justo e possível; se não souber como, peça orientação ao confessor." },
     ),
     q(
       'Fiz julgamentos temerários a respeito de alguém?', { rotulo: "Julgamento precipitado", texto: "Acreditar firmemente, sem razão suficiente, que alguém possui um defeito moral ou fez algo errado." },
@@ -507,17 +525,19 @@ export const manual: Record<string, Entrada[]> = {
   m9: [
     q(
       'Consenti em pensamentos, desejos ou olhares contra a castidade? Quem foi objeto desses pensamentos ou olhares: pessoa casada, parente próximo, pessoa consagrada, criança, pessoa do mesmo sexo?',
+      tentacao,
       atencao(
         'Quando percebemos que um olhar pode nos levar ao desejo sexual, devemos desviar imediatamente o olhar para não desejarmos sexualmente aquela outra pessoa. E quando percebemos que uma imagem sexual veio à nossa mente, devemos desviar o pensamento para não nos “deleitarmos” com aquela imagem.',
       ),
+      duvida,
     ),
     q('Sendo casado, pratiquei o ato sexual pensando voluntariamente em outra pessoa?'),
   ],
 
   m10: [
-    q('Fiquei triste ou com raiva por ver que uma pessoa tinha algum bem material que eu não possuía?', { rotulo: "Inveja", texto: "Desejar os bens de outrem." }),
+    q('Alimentei tristeza ou raiva por ver que uma pessoa tinha algum bem material que eu não possuía?', { rotulo: "Inveja", texto: "Desejar os bens de outrem." }, tentacao),
     q(
-      'Fiquei triste ou com raiva por ver que uma pessoa tinha algum bem espiritual que eu não possuía?', { texto: "Inclui a inveja dos sucessos e talentos alheios." },
+      'Alimentei tristeza ou raiva por ver que uma pessoa tinha algum bem espiritual que eu não possuía?', { texto: "Inclui a inveja dos sucessos e talentos alheios." },
       exemplo(
         'Invejar a capacidade intelectual de uma pessoa; invejar a determinação e a força de vontade da pessoa; invejar as virtudes de uma pessoa etc.',
       ),
@@ -551,7 +571,7 @@ export const manual: Record<string, Entrada[]> = {
       notas: [
         { rotulo: "Segundo preceito da Igreja", texto: "Jejuar, abster-se de carne e fazer penitência nos dias prescritos. A lei da abstinência obriga aqueles que completaram 14 anos de idade até o fim da vida. A lei do jejum obriga aqueles que atingiram sua maioridade (18 anos) até o início de seus 60 anos." },
         { texto: "Jejuar significa comer menos comida do que normalmente se come. Nos dias de jejum, é permitido comer uma refeição completa e duas outras menores que, juntas, não passem a quantidade de uma refeição completa. Os dias de jejum são a Quarta-feira de Cinzas e a Sexta-feira Santa." },
-        { texto: "Nos dias de abstinência, é proibido comer carne. Os dias de abstinência são: todas as sextas-feiras do ano e a Quarta-feira de Cinzas. No Brasil, a abstinência pode ser comutada (salvo na Quarta-feira de Cinzas e na Sexta-feira Santa) por outras formas de penitência, principalmente em obras de caridade e exercícios de piedade. Uma penitência substituta permitida poderia ser: dizer um terço, a Via Sacra, visitar os doentes ou presos, etc. O mais aconselhável é guardar a tradicional abstinência." },
+        { texto: "Nos dias de abstinência, é proibido comer carne. Os dias de abstinência são: todas as sextas-feiras do ano e a Quarta-feira de Cinzas. A conferência episcopal de cada país pode permitir substituir a abstinência de algumas sextas-feiras por outras formas de penitência, principalmente obras de caridade e exercícios de piedade; informe-se sobre o que vale onde você vive. Uma penitência substituta permitida poderia ser: dizer um terço, a Via Sacra, visitar os doentes ou presos, etc. O mais aconselhável é guardar a tradicional abstinência." },
         atencao(
           'Estão obrigadas à lei da abstinência de carne as pessoas que completaram catorze anos de idade. Estão obrigadas à lei do jejum todas as pessoas que completaram dezoito anos de idade, e esta obrigação perdura até os sessenta anos.',
         ),

@@ -176,7 +176,7 @@ export const secoes: Secao[] = [
       'Ouvir músicas blasfemas',
       [
         'Amaldiçoar a si mesmo ou a outros',
-        'Se tiver intenção de dizer realmente o que disse, há pecado grave.',
+        'Se tiver intenção de dizer realmente o que disse, há matéria grave.',
       ],
       'Murmurar, reclamando das disposições da providência divina',
       'Irreverência na Igreja, falando durante a Missa ou em uma Igreja sem razão suficiente ou distrair os demais; vestindo-se de forma inapropriada na Igreja ou por qualquer outro comportamento impróprio',
@@ -362,11 +362,14 @@ export const secoes: Secao[] = [
       marca: 'VII',
       titulo: '7º Mandamento',
       citacao: 'Não roubarás',
+      // Redação nossa, a partir do texto de 2013, que dizia "sem a restituição ou o firme propósito
+      // de fazê-la, o pecado não será perdoado".
       avisos: [
-        'Quanto aos pecados contra a justiça, é preciso dizer ao sacerdote, o mais exatamente possível, o valor do que foi furtado ou roubado, ou a quantidade dos danos causados pela sua injustiça, de modo que o padre possa julgar se os pecados são mortais ou não. Dizer se já restituiu. Sem a restituição ou o firme propósito de fazê-la, o pecado não será perdoado.',
+        'Quanto aos pecados contra a justiça, diga ao sacerdote, o mais exatamente possível, o valor do que foi furtado ou roubado, ou o tamanho do dano causado, para que ele possa julgar a gravidade. Diga também se já restituiu.',
+        'Quando houver um dano a reparar, procure fazê-lo de modo justo e possível. Se não souber como proceder, se não puder reparar de imediato ou se a situação for complexa, explique-a ao confessor e peça orientação. Para o perdão, pede-se o firme propósito de reparar; não é preciso ter resolvido tudo antes de se confessar.',
       ],
       depois:
-        'Examine se você reparou toda a injustiça feita por você mesmo. Seus pecados não serão perdoados enquanto você recusar ou deliberadamente negligenciar fazer um reparo. Se o que você adquiriu injustamente não está mais em sua possessão, devolva o seu valor. Se não puder devolver o valor inteiro, devolva pelo menos uma parte sem atraso. Se não puder devolver de uma vez, você deve ter a firme e sincera resolução de fazê-lo o mais breve possível e deve também procurar seriamente adquirir o meio de fazê-lo. A obrigação de restituição é compulsória até que seja totalmente exonerada. A restituição deve ser feita ao dono. Se o dono não puder ser achado, você deve dar o dinheiro aos pobres, à Igreja, ou a alguma obra de caridade.',
+        'Examine se causou a alguém um prejuízo injusto e se fez o que estava ao seu alcance para repará-lo. Quem, podendo reparar, recusa-se deliberadamente a fazê-lo não mostra um propósito sincero de emenda; já a impossibilidade real de reparar tudo imediatamente não é o mesmo que a recusa, desde que haja vontade de procurar uma solução possível. Se tomou injustamente um bem alheio, deve devolvê-lo; se isso já não for possível, deve reparar o prejuízo com o equivalente adequado, na medida do possível. Quando não souber se há obrigação de reparar ou como fazê-lo, procure a orientação do confessor.',
     },
     [
       'Trapacear',
@@ -429,7 +432,7 @@ export const secoes: Secao[] = [
       titulo: '9º Mandamento',
       citacao: 'Não cobiçarás a mulher do próximo',
       intro:
-        'O nono mandamento proíbe todo pensamento e desejo impuro com os quais nos comprazemos deliberadamente, pensando neles voluntariamente ou consentindo neles de bom grado quando tais paixões ou pensamentos impuros vêm à nossa mente. O penitente deve ter em mente que se deleitar deliberadamente ou consentir em qualquer pecado listado no sexto mandamento pode ter o mesmo grau de gravidade de executá-lo de fato, isto é, trata-se de pecado mortal ou venial, segundo o pecado e conforme haja plena advertência e pleno consentimento.',
+        'O nono mandamento proíbe todo pensamento e desejo impuro com os quais nos comprazemos deliberadamente, pensando neles voluntariamente ou consentindo neles de bom grado quando tais paixões ou pensamentos impuros vêm à nossa mente. O penitente deve ter em mente que se deleitar deliberadamente ou consentir em qualquer pecado listado no sexto mandamento pode ter o mesmo grau de gravidade de executá-lo de fato, isto é, trata-se de pecado mortal ou venial, segundo o pecado e conforme haja plena advertência e pleno consentimento. Uma imagem, atração ou ideia que surge sem ser procurada não é, por si só, uma escolha deliberada: o que se examina é se foi acolhida voluntariamente ou alimentada.',
     },
     [], // a lista de 2013 só traz o parágrafo acima; os itens vêm do manual
   ),
