@@ -407,6 +407,10 @@ small {
   border-bottom: 1px solid var(--linha);
 }
 
+.faixa > .acoes {
+  margin-top: 2rem;
+}
+
 .faixa:last-child {
   border-bottom: 0;
 }

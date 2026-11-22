@@ -1,3 +1,4 @@
+import manualPdf from '../../confissao/manual-de-confissao-ppr.pdf?url'
 import { pecadoMortal, requisitos } from '../dados/textos.ts'
 
 export function Preparar() {
@@ -60,6 +61,9 @@ export function Preparar() {
       <div className="acoes">
         <a className="botao" href="/exame">
           Fazer o exame de consciência
+        </a>
+        <a href={manualPdf} download="manual-de-confissao.pdf">
+          Baixar o Manual de Confissão do Padre Paulo Ricardo (PDF)
         </a>
       </div>
     </div>

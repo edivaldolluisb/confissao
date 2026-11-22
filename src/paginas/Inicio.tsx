@@ -1,4 +1,5 @@
 import type { PointerEvent } from 'react'
+import manualPdf from '../../confissao/manual-de-confissao-ppr.pdf?url'
 import { dataPorExtenso } from '../comum.tsx'
 import { contarItens, tipos } from '../dados/exame.ts'
 import { citacaoSales, rito } from '../dados/textos.ts'
@@ -117,6 +118,19 @@ export function Inicio() {
             <p>Recebida a absolvição, a lista é apagada. Ficam a oração e a penitência anotada.</p>
           </li>
         </ol>
+      </section>
+
+      <section className="faixa">
+        <h2>Manual de Confissão</h2>
+        <p className="lide">
+          Material fornecido pelo Padre Paulo Ricardo. As perguntas deste guia vêm, em grande parte,
+          deste manual. Baixe-o para ler com calma, imprimir ou levar consigo.
+        </p>
+        <div className="acoes">
+          <a className="botao" href={manualPdf} download="manual-de-confissao.pdf">
+            Baixar o Manual de Confissão (PDF)
+          </a>
+        </div>
       </section>
 
       <section className="faixa">

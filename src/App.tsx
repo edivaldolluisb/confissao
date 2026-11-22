@@ -77,8 +77,11 @@ export function App() {
           O sacramento acontece diante de um sacerdote. Este guia prepara e acompanha, não substitui.
         </p>
         <p>
-          Textos do Exame de consciência para adultos (2013) e do Manual de Confissão; orações do Manual
-          da Paróquia (1942).
+          Textos do Exame de consciência para adultos (2013) e do Manual de Confissão, fornecido pelo
+          Padre Paulo Ricardo; orações do Manual da Paróquia (1942).
+        </p>
+        <p>
+          Contato: <a href="mailto:ediluis16@duck.com">ediluis16@duck.com</a>
         </p>
         <button className="discreto" onClick={() => setApagando(true)}>
           Apagar tudo o que está guardado neste aparelho
