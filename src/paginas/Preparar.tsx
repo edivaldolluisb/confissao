@@ -1,5 +1,5 @@
 import manualPdf from '../../confissao/manual-de-confissao-ppr.pdf?url'
-import { pecadoMortal, requisitos } from '../dados/textos.ts'
+import { pecadoMortal, perguntasFrequentes, requisitos } from '../dados/textos.ts'
 
 export function Preparar() {
   return (
@@ -56,6 +56,36 @@ export function Preparar() {
             </li>
           ))}
         </ol>
+      </section>
+
+      <section>
+        <h2>Perguntas frequentes</h2>
+        <dl className="perguntas-e-respostas">
+          {perguntasFrequentes.map((item) => (
+            <div key={item.pergunta}>
+              <dt>{item.pergunta}</dt>
+              <dd>{item.resposta}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="nota-fontes">
+          Fontes: Catecismo da Igreja Católica (sacramento da Penitência e pecado mortal) e o Manual de
+          Confissão do Padre Paulo Ricardo.
+        </p>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: perguntasFrequentes.map((item) => ({
+                '@type': 'Question',
+                name: item.pergunta,
+                acceptedAnswer: { '@type': 'Answer', text: item.resposta },
+              })),
+            }),
+          }}
+        />
       </section>
 
       <div className="acoes">

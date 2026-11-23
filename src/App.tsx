@@ -10,7 +10,7 @@ import { Preparar } from './paginas/Preparar.tsx'
 
 export const meta: Record<string, [string, string]> = {
   preparar: ['Antes de se confessar', 'Como se preparar para a confissão: o que fazer antes de entrar no confessionário.'],
-  exame: ['Exame de consciência', 'Exame de consciência para adultos, por mandamento, para preparar a confissão. Nada sai do aparelho.'],
+  exame: ['Exame de consciência para a confissão', 'Exame de consciência para adultos, por mandamento, para preparar a confissão. Nada sai do aparelho.'],
   confissao: ['No confessionário', 'O que dizer ao sacerdote, passo a passo, durante a confissão.'],
   depois: ['Depois da confissão', 'Cumprir a penitência e dar graças depois da confissão.'],
   oracoes: ['Orações da confissão', 'Ato de contrição e outras orações para antes e depois da confissão.'],

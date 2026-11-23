@@ -65,7 +65,7 @@ function Item({ pergunta: p, estado }: { pergunta: Pergunta; estado: Estado }) {
 function Abertura({ estado }: { estado: Estado }) {
   return (
     <>
-      <h1>Exame de consciência</h1>
+      <h1>Exame de consciência para a confissão</h1>
       <fieldset className="tipos">
         <legend>Que exame fazer</legend>
         {tipos.map((t) => (

@@ -1177,3 +1177,9 @@ dialog .acoes {
     animation: none !important;
   }
 }
+
+.nota-fontes {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--tinta-suave);
+}

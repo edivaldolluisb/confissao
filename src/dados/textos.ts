@@ -141,3 +141,37 @@ export const requisitos = [
     nota: 'Se você fez uma confissão bem-feita, estava disposto a cumprir a penitência dada pelo sacerdote e recebeu a absolvição, sua confissão foi válida e você foi perdoado. Caso você tenha esquecido qual penitência o padre lhe deu, sua confissão permanece válida, porque você já havia recebido o perdão; e nesse caso você poderá rezar alguma outra oração como penitência.',
   },
 ]
+
+// Perguntas frequentes da página "Antes de se confessar" (também viram dados estruturados para buscadores).
+export const perguntasFrequentes = [
+  {
+    pergunta: 'Quanto tempo deve durar o exame de consciência?',
+    resposta:
+      'Não há um tempo fixo. Dure o que for preciso para se lembrar dos pecados mortais cometidos desde a última confissão bem-feita e de quantas vezes caiu em cada um. Quem não se confessa há muito tempo precisa de mais calma, e pode anotar os pecados para não esquecer.',
+  },
+  {
+    pergunta: 'É preciso lembrar o número exato de vezes que pequei?',
+    resposta:
+      'Diga o número com a maior exatidão que conseguir. Se não se lembra com precisão, basta uma estimativa honesta, por exemplo “mais ou menos dez vezes” ou “quase toda semana”.',
+  },
+  {
+    pergunta: 'O que torna um pecado mortal?',
+    resposta:
+      'Três condições juntas: matéria grave, plena advertência e pleno consentimento. Faltando uma delas, o pecado não é mortal.',
+  },
+  {
+    pergunta: 'É obrigatório confessar também os pecados veniais?',
+    resposta:
+      'Não é obrigatório, mas é muito recomendado. Os pecados mortais precisam ser confessados, com a espécie e o número de vezes. Confessar os veniais ajuda a formar a consciência e a crescer na vida espiritual.',
+  },
+  {
+    pergunta: 'E se eu me esquecer de um pecado na confissão?',
+    resposta:
+      'Se o esquecimento não foi proposital, a confissão é válida e o pecado foi perdoado. Basta mencioná-lo na próxima confissão. Esconder um pecado de propósito, por vergonha, é que torna a confissão inválida.',
+  },
+  {
+    pergunta: 'O sacerdote pode contar a alguém o que eu confessei?',
+    resposta:
+      'Não. A confissão está sujeita ao sigilo sacramental: o sacerdote não pode revelar a ninguém o que ouviu, em nenhuma circunstância.',
+  },
+]
