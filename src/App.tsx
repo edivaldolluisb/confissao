@@ -8,6 +8,14 @@ import { Inicio } from './paginas/Inicio.tsx'
 import { Oracoes } from './paginas/Oracoes.tsx'
 import { Preparar } from './paginas/Preparar.tsx'
 
+export const meta: Record<string, [string, string]> = {
+  preparar: ['Antes de se confessar', 'Como se preparar para a confissão: o que fazer antes de entrar no confessionário.'],
+  exame: ['Exame de consciência', 'Exame de consciência para adultos, por mandamento, para preparar a confissão. Nada sai do aparelho.'],
+  confissao: ['No confessionário', 'O que dizer ao sacerdote, passo a passo, durante a confissão.'],
+  depois: ['Depois da confissão', 'Cumprir a penitência e dar graças depois da confissão.'],
+  oracoes: ['Orações da confissão', 'Ato de contrição e outras orações para antes e depois da confissão.'],
+}
+
 const paginas = [
   { rota: 'preparar', nome: 'Preparar' },
   { rota: 'exame', nome: 'Exame' },
@@ -32,6 +40,15 @@ export function App() {
     scrollTo(0, 0)
     conteudo.current?.focus({ preventScroll: true })
   }, [pagina, passo])
+
+  useEffect(() => {
+    const m = meta[pagina]
+    document.title = m ? `${m[0]} — O Hiponense` : 'Confissão — O Hiponense'
+    if (m) document.querySelector('meta[name=description]')?.setAttribute('content', m[1])
+    const url = `https://confissao.pages.dev/${pagina}`
+    document.querySelector('link[rel=canonical]')?.setAttribute('href', url)
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', url)
+  }, [pagina])
 
   return (
     <>

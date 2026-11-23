@@ -42,7 +42,7 @@ const assinar = (o: () => void) => {
   return () => ouvintes.delete(o)
 }
 
-export const useEstado = () => useSyncExternalStore(assinar, () => estado)
+export const useEstado = () => useSyncExternalStore(assinar, () => estado, () => estado)
 
 // Rota pelo caminho do endereço: "/exame/m7" -> ['exame', 'm7'].
 // Exige que o servidor devolva index.html para qualquer caminho; sem isso, abrir ou
@@ -54,7 +54,7 @@ const assinarRota = (o: () => void) => {
   addEventListener('popstate', o)
   return () => removeEventListener('popstate', o)
 }
-export const useRota = () => useSyncExternalStore(assinarRota, lerRota).split('/')
+export const useRota = () => useSyncExternalStore(assinarRota, lerRota, lerRota).split('/')
 
 // Navegação síncrona, para caber dentro de uma view transition.
 export function irPara(rota: string) {
@@ -76,4 +76,4 @@ const assinarLargura = (o: () => void) => {
   consultaLarga.addEventListener('change', o)
   return () => consultaLarga.removeEventListener('change', o)
 }
-export const useTelaLarga = () => useSyncExternalStore(assinarLargura, () => consultaLarga.matches)
+export const useTelaLarga = () => useSyncExternalStore(assinarLargura, () => consultaLarga.matches, () => false)
