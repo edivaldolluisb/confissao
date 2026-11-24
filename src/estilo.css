@@ -1194,3 +1194,48 @@ dialog .acoes {
 .outros li::before {
   content: none;
 }
+
+/* Menu "Mais": páginas extras sem lotar o topo no telemóvel. */
+.mais {
+  position: relative;
+}
+
+.mais summary {
+  padding-block: 0.25rem;
+  color: var(--sobre-estola-suave);
+  cursor: pointer;
+  list-style: none;
+  border-bottom: 2px solid transparent;
+}
+
+.mais summary::-webkit-details-marker {
+  display: none;
+}
+
+.mais summary::after {
+  content: ' ▾';
+}
+
+.mais summary:hover,
+.mais[open] summary,
+.mais summary[aria-current] {
+  color: var(--sobre-estola);
+}
+
+.mais summary[aria-current] {
+  border-bottom-color: var(--fio);
+}
+
+.mais div {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  display: grid;
+  gap: 0.25rem;
+  min-width: 12rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--estola);
+  border: 1px solid var(--fio);
+  white-space: nowrap;
+}

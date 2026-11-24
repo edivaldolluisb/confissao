@@ -24,11 +24,17 @@ export const meta: Record<string, [string, string]> = {
   oracoes: ['Orações da confissão', 'Ato de contrição e outras orações para antes e depois da confissão.'],
 }
 
+const outros = [
+  { rota: 'diario', nome: 'Exame diário' },
+  { rota: 'capitais', nome: 'Pecados capitais' },
+  { rota: 'estados', nome: 'Deveres do estado' },
+  { rota: 'criancas', nome: 'Para crianças' },
+]
+
 const paginas = [
   { rota: 'preparar', nome: 'Preparar' },
   { rota: 'exame', nome: 'Exame' },
   { rota: 'confissao', nome: 'Confissão' },
-  { rota: 'diario', nome: 'Diário' },
   { rota: 'oracoes', nome: 'Orações' },
 ]
 
@@ -37,6 +43,7 @@ export function App() {
   const estado = useEstado()
   const [apagando, setApagando] = useState(false)
   const conteudo = useRef<HTMLElement>(null)
+  const mais = useRef<HTMLDetailsElement>(null)
   const marcados = Object.keys(estado.marcas).length + (estado.outros.trim() ? 1 : 0)
 
   // Página nova começa no topo, com o foco no conteúdo.
@@ -47,6 +54,7 @@ export function App() {
       return
     }
     scrollTo(0, 0)
+    mais.current?.removeAttribute('open')
     conteudo.current?.focus({ preventScroll: true })
   }, [pagina, passo])
 
@@ -79,6 +87,16 @@ export function App() {
               )}
             </a>
           ))}
+          <details className="mais" ref={mais}>
+            <summary aria-current={outros.some((o) => o.rota === pagina) ? 'page' : undefined}>Mais</summary>
+            <div>
+              {outros.map((o) => (
+                <a key={o.rota} href={`/${o.rota}`} aria-current={pagina === o.rota ? 'page' : undefined}>
+                  {o.nome}
+                </a>
+              ))}
+            </div>
+          </details>
         </nav>
       </header>
 
@@ -112,7 +130,7 @@ export function App() {
         </p>
         <p>
           Textos do Exame de consciência para adultos (2013) e do Manual de Confissão, fornecido pelo
-          Padre Paulo Ricardo; orações do Manual da Paróquia (1942).
+          Padre Paulo Ricardo; orações do Manual da Paróquia (1942); Catecismo de São Pio X.
         </p>
         <p>
           Contato: <a href="mailto:ediluis16@duck.com">ediluis16@duck.com</a>
