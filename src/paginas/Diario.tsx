@@ -64,6 +64,10 @@ export function Diario() {
           </div>
         </li>
       </ol>
+
+      <div className="acoes">
+        <a href="/criancas">Exame de consciência para crianças</a>
+      </div>
     </div>
   )
 }
