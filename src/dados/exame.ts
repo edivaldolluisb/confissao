@@ -53,25 +53,27 @@ export type Entrada =
   | string
   | [texto: string, nota: string]
   | { grupo: string }
-  | { texto: string; acuso?: string; notas?: (string | Nota)[]; itens?: string[] }
+  | { texto: string; acuso?: string; notas?: (string | Nota)[]; itens?: string[]; oculto?: boolean }
 
 // ponytail: ids pela posição na lista. Inserir ou remover um item no meio desloca as
 // marcas já guardadas; ao editar a lista, subir a versão da CHAVE em estado.ts.
 function secao(dados: Omit<Secao, 'perguntas'>, lista: Entrada[]): Secao {
   const entradas: Entrada[] = [...lista, { grupo: GRUPO_MANUAL }, ...(manual[dados.id] ?? [])]
   const perguntas: Pergunta[] = []
+  let n = 0 // conta também os ocultos, para os ids das outras perguntas não mudarem
   let grupo: string | undefined
   entradas.forEach((e, i) => {
     if (typeof e === 'object' && 'grupo' in e) {
       grupo = e.grupo
       return
     }
-    const { itens, ...base } = typeof e === 'string' ? { texto: e } : Array.isArray(e) ? { texto: e[0], notas: [e[1]] } : e
+    const { itens, oculto, ...base } = typeof e === 'string' ? { texto: e } : Array.isArray(e) ? { texto: e[0], notas: [e[1]] } : e
     // `itens` é a lista que segue o primeiro parágrafo da nota.
     const notas = base.notas?.map((n, j): Nota => ({ ...(typeof n === 'string' ? { texto: n } : n), ...(j === 0 && itens ? { itens } : {}) }))
     // A lista de 2013 só entra no exame completo; do manual, as perguntas de RAPIDO entram em todos.
     const nivel: Nivel = i < lista.length ? 3 : RAPIDO.some((inicio) => base.texto.startsWith(inicio)) ? 1 : 2
-    perguntas.push({ ...base, notas, nivel, id: `${dados.id}-${perguntas.length + 1}`, grupo })
+    n++
+    if (!oculto) perguntas.push({ ...base, notas, nivel, id: `${dados.id}-${n}`, grupo })
   })
   return { ...dados, perguntas }
 }
@@ -230,9 +232,11 @@ export const secoes: Secao[] = [
     'Deixar de rezar pelo próprio país, pelo seu governo',
     'Colocar o país acima de Deus',
     ['Tomar parte em questões subversivas', 'Atividades revolucionárias.'],
-    'Juntar-se a alguma associação Comunista ou Liberal',
+    // Ocultos até confirmar com o padre. Cada `oculto` guarda o lugar do id da pergunta;
+    // para voltar a mostrar, trocar pelo texto do comentário.
+    { texto: '', oculto: true }, // 'Juntar-se a alguma associação Comunista ou Liberal'
     'Resistir às autoridades legais do país, tomando parte em alguma violência de multidão, ou perturbando a paz pública',
-    'Votar em partidos comunistas ou socialistas',
+    { texto: '', oculto: true }, // 'Votar em partidos comunistas ou socialistas'
 
     { grupo: 'Para os empregadores' },
     'Não permitir aos empregados tempo razoável para o cumprimento dos deveres e instrução religiosos',

@@ -66,6 +66,8 @@ export function Diario() {
       </ol>
 
       <div className="acoes">
+        <a href="/estados">Exame pelos deveres do próprio estado</a>
+        <a href="/capitais">Exame pelos sete pecados capitais</a>
         <a href="/criancas">Exame de consciência para crianças</a>
       </div>
     </div>

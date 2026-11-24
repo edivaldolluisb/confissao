@@ -14,7 +14,7 @@ const temas = [
   {
     titulo: 'Com a minha família',
     perguntas: [
-      'Obedeci ao papai e à mamãe, ou respondi mal?',
+      'Obedeci ao pai e à mãe, ou respondi mal?',
       'Briguei com meus irmãos? Fui egoísta com eles?',
       'Ajudei em casa, ou fiz só o que queria?',
     ],
@@ -25,7 +25,7 @@ const temas = [
       'Fui atento na aula e fiz os deveres?',
       'Bati, empurrei ou chamei nomes feios a alguém?',
       'Deixei alguém de lado ou fiz troça de um colega?',
-      'Peguei algo que não era meu, ou estraguei coisas dos outros?',
+      'Tirei algo que não era meu, ou estraguei coisas dos outros?',
     ],
   },
   {

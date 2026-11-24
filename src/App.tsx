@@ -3,7 +3,9 @@ import { Dialogo } from './comum.tsx'
 import { apagarTudo, useEstado, useRota } from './estado.ts'
 import { Confissao } from './paginas/Confissao.tsx'
 import { Diario } from './paginas/Diario.tsx'
+import { Capitais } from './paginas/Capitais.tsx'
 import { Criancas } from './paginas/Criancas.tsx'
+import { Estados } from './paginas/Estados.tsx'
 import { Depois } from './paginas/Depois.tsx'
 import { Exame } from './paginas/Exame.tsx'
 import { Inicio } from './paginas/Inicio.tsx'
@@ -15,6 +17,8 @@ export const meta: Record<string, [string, string]> = {
   exame: ['Exame de consciência para a confissão', 'Exame de consciência para adultos, por mandamento, para preparar a confissão. Nada sai do aparelho.'],
   confissao: ['No confessionário', 'O que dizer ao sacerdote, passo a passo, durante a confissão.'],
   diario: ['Exame de consciência diário', 'Exame de consciência diário em cinco passos, para fazer ao fim do dia, antes de dormir.'],
+  estados: ['Exame pelos deveres do próprio estado', 'Exame de consciência pelos deveres do próprio estado: pais, filhos, casados, empregados, professores e estudantes.'],
+  capitais: ['Exame pelos sete pecados capitais', 'Exame de consciência pelos sete pecados capitais: soberba, avareza, luxúria, inveja, gula, ira e preguiça.'],
   criancas: ['Exame de consciência para crianças', 'Exame de consciência para crianças, com perguntas simples e orientação para os pais, para a primeira confissão.'],
   depois: ['Depois da confissão', 'Cumprir a penitência e dar graças depois da confissão.'],
   oracoes: ['Orações da confissão', 'Ato de contrição e outras orações para antes e depois da confissão.'],
@@ -87,6 +91,10 @@ export function App() {
           <Confissao />
         ) : pagina === 'diario' ? (
           <Diario />
+        ) : pagina === 'estados' ? (
+          <Estados />
+        ) : pagina === 'capitais' ? (
+          <Capitais />
         ) : pagina === 'criancas' ? (
           <Criancas />
         ) : pagina === 'depois' ? (

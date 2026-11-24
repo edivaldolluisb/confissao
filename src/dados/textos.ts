@@ -147,12 +147,12 @@ export const perguntasFrequentes = [
   {
     pergunta: 'Quanto tempo deve durar o exame de consciência?',
     resposta:
-      'Não há um tempo fixo. Dure o que for preciso para se lembrar dos pecados mortais cometidos desde a última confissão bem-feita e de quantas vezes caiu em cada um. Quem não se confessa há muito tempo precisa de mais calma, e pode anotar os pecados para não esquecer.',
+      'Não há um tempo fixo. Dure o que for preciso para se lembrar dos pecados mortais cometidos desde a última confissão bem feita e de quantas vezes caiu em cada um. Quem não se confessa há muito tempo precisa de mais calma, e pode anotar os pecados para não esquecer.',
   },
   {
     pergunta: 'É preciso lembrar o número exato de vezes que pequei?',
     resposta:
-      'Diga o número com a maior exatidão que conseguir. Se não se lembra com precisão, basta uma estimativa honesta, por exemplo “mais ou menos dez vezes” ou “quase toda semana”.',
+      'Diga o número com a maior exatidão que conseguir. Se não se lembra com precisão, basta uma estimativa honesta, por exemplo “mais ou menos dez vezes” ou “quase todas as semanas”.',
   },
   {
     pergunta: 'O que torna um pecado mortal?',
@@ -162,7 +162,7 @@ export const perguntasFrequentes = [
   {
     pergunta: 'É obrigatório confessar também os pecados veniais?',
     resposta:
-      'Não é obrigatório, mas é muito recomendado. Os pecados mortais precisam ser confessados, com a espécie e o número de vezes. Confessar os veniais ajuda a formar a consciência e a crescer na vida espiritual.',
+      'Não é obrigatório, mas é muito recomendado. Os pecados mortais precisam de ser confessados, com a espécie e o número de vezes. Confessar os veniais ajuda a formar a consciência e a crescer na vida espiritual.',
   },
   {
     pergunta: 'E se eu me esquecer de um pecado na confissão?',
