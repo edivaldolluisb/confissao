@@ -121,6 +121,36 @@ export function Inicio() {
       </section>
 
       <section className="faixa">
+        <h2>Outros exames</h2>
+        <ul className="caminho outros">
+          <li>
+            <h3>
+              <a href="/diario">Exame diário</a>
+            </h3>
+            <p>Cinco minutos ao fim do dia, antes de dormir.</p>
+          </li>
+          <li>
+            <h3>
+              <a href="/capitais">Pecados capitais</a>
+            </h3>
+            <p>As perguntas do exame agrupadas por soberba, avareza, luxúria, inveja, gula, ira e preguiça.</p>
+          </li>
+          <li>
+            <h3>
+              <a href="/estados">Deveres do estado</a>
+            </h3>
+            <p>Pais, filhos, casados, empregados, professores e estudantes.</p>
+          </li>
+          <li>
+            <h3>
+              <a href="/criancas">Para crianças</a>
+            </h3>
+            <p>Perguntas simples para a primeira confissão, com orientação para os pais.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section className="faixa">
         <h2>Manual de Confissão</h2>
         <p className="lide">
           Material fornecido pelo Padre Paulo Ricardo. As perguntas deste guia vêm, em grande parte,
