@@ -4,7 +4,6 @@ import { createServer } from 'vite'
 import { renderToString } from 'react-dom/server'
 import { createElement } from 'react'
 
-const rotas = ['', 'preparar', 'exame', 'confissao', 'depois', 'oracoes']
 
 // App toca em globais do navegador ao carregar; stubs mínimos para o servidor.
 const noop = () => {}
@@ -16,6 +15,7 @@ globalThis.matchMedia = () => ({ matches: false, addEventListener: noop, removeE
 
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' })
 const { App, meta } = await vite.ssrLoadModule('/src/App.tsx')
+const rotas = ['', ...Object.keys(meta)]
 const modelo = readFileSync('dist/index.html', 'utf8')
 
 for (const rota of rotas) {
